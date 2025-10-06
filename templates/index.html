@@ -1,0 +1,114 @@
+{% extends "base.html" %} {% block title %}Home - Task Manager{% endblock %} {%
+block content %}
+<div class="hero-section text-center py-5">
+  <h1 class="display-4 fw-bold mb-4 animate-slide-up">
+    <i class="fas fa-tasks me-3 animate-float"></i>Task Manager
+  </h1>
+  <p class="lead mb-4 animate-slide-up" style="animation-delay: 0.2s">
+    Organize your life with our simple and powerful task management application.
+    Create, track, and complete your tasks with ease.
+  </p>
+
+  {% if not current_user.is_authenticated %}
+  <div
+    class="d-grid gap-2 d-md-flex justify-content-md-center animate-slide-up"
+    style="animation-delay: 0.4s"
+  >
+    <a
+      href="{{ url_for('register') }}"
+      class="btn btn-primary btn-lg me-md-2 hover-lift"
+    >
+      <i class="fas fa-user-plus me-2"></i>Get Started
+    </a>
+    <a
+      href="{{ url_for('login') }}"
+      class="btn btn-outline-primary btn-lg hover-lift"
+    >
+      <i class="fas fa-sign-in-alt me-2"></i>Login
+    </a>
+  </div>
+  {% else %}
+  <div
+    class="d-grid gap-2 d-md-flex justify-content-md-center animate-slide-up"
+    style="animation-delay: 0.4s"
+  >
+    <a
+      href="{{ url_for('dashboard') }}"
+      class="btn btn-primary btn-lg hover-lift"
+    >
+      <i class="fas fa-tachometer-alt me-2"></i>Go to Dashboard
+    </a>
+  </div>
+  {% endif %}
+</div>
+
+<!-- Features Section -->
+<div style="padding: 6rem 2rem">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 mb-4">
+        <div
+          class="card h-100 border-0 shadow-sm hover-lift animate-slide-left"
+          style="animation-delay: 0.6s"
+        >
+          <div class="card-body text-center">
+            <div class="feature-icon bg-primary rounded-circle mx-auto mb-3">
+              <i
+                class="fas fa-plus fa-2x"
+                style="color: var(--accent-primary)"
+              ></i>
+            </div>
+            <h5 class="card-title text-white">Create Tasks</h5>
+            <p class="card-text text-white-50">
+              Easily create new tasks with titles, descriptions, and priority
+              levels.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-4">
+        <div
+          class="card h-100 border-0 shadow-sm hover-lift animate-slide-up"
+          style="animation-delay: 0.8s"
+        >
+          <div class="card-body text-center">
+            <div class="feature-icon bg-success rounded-circle mx-auto mb-3">
+              <i
+                class="fas fa-edit fa-2x"
+                style="color: var(--success-color)"
+              ></i>
+            </div>
+            <h5 class="card-title text-white">Manage Tasks</h5>
+            <p class="card-text text-white-50">
+              Edit, update, and organize your tasks with different status and
+              priority levels.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-4">
+        <div
+          class="card h-100 border-0 shadow-sm hover-lift animate-slide-right"
+          style="animation-delay: 1s"
+        >
+          <div class="card-body text-center">
+            <div class="feature-icon bg-info rounded-circle mx-auto mb-3">
+              <i
+                class="fas fa-chart-line fa-2x"
+                style="color: var(--info-color)"
+              ></i>
+            </div>
+            <h5 class="card-title text-white">Track Progress</h5>
+            <p class="card-text text-white-50">
+              Monitor your progress with visual indicators and completion
+              tracking.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

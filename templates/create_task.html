@@ -1,0 +1,62 @@
+{% extends "base.html" %} {% block title %}Create Task - Task Manager{% endblock
+%} {% block content %}
+<div class="row justify-content-center">
+  <div class="col-md-8 col-lg-6">
+    <div class="card shadow">
+      <div class="card-header bg-primary text-white">
+        <h4 class="card-title mb-0">
+          <i class="fas fa-plus me-2"></i>Create New Task
+        </h4>
+      </div>
+      <div class="card-body p-4">
+        <form method="POST">
+          {{ form.hidden_tag() }}
+
+          <div class="mb-3">
+            {{ form.title.label(class="form-label") }} {{
+            form.title(class="form-control" + (" is-invalid" if
+            form.title.errors else ""), placeholder="Enter task title") }} {% if
+            form.title.errors %}
+            <div class="invalid-feedback">
+              {% for error in form.title.errors %} {{ error }} {% endfor %}
+            </div>
+            {% endif %}
+          </div>
+
+          <div class="mb-3">
+            {{ form.description.label(class="form-label") }} {{
+            form.description(class="form-control" + (" is-invalid" if
+            form.description.errors else ""), rows="4", placeholder="Enter task
+            description (optional)") }} {% if form.description.errors %}
+            <div class="invalid-feedback">
+              {% for error in form.description.errors %} {{ error }} {% endfor
+              %}
+            </div>
+            {% endif %}
+          </div>
+
+          <div class="mb-4">
+            {{ form.priority.label(class="form-label") }} {{
+            form.priority(class="form-select" + (" is-invalid" if
+            form.priority.errors else "")) }} {% if form.priority.errors %}
+            <div class="invalid-feedback">
+              {% for error in form.priority.errors %} {{ error }} {% endfor %}
+            </div>
+            {% endif %}
+          </div>
+
+          <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <a
+              href="{{ url_for('dashboard') }}"
+              class="btn btn-secondary me-md-2"
+            >
+              <i class="fas fa-times me-2"></i>Cancel
+            </a>
+            {{ form.submit(class="btn btn-primary") }}
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
